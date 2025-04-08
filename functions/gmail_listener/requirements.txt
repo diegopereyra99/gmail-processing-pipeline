@@ -1,4 +1,10 @@
 google-api-python-client
 google-auth
-requests
-flask
+google-auth-oauthlib
+google-cloud-secret-manager
+google-cloud-functions
+google-cloud-storage
+google-cloud-core
+google-cloud-pubsub
+pydantic
+google-genai
