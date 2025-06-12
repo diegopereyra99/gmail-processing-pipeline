@@ -3,10 +3,11 @@ from typing import List, Optional
 from pydantic import BaseModel
 from google import genai
 from google.genai.types import Part, GenerateContentConfig
+import os
 
 # --- Gemini Config ---
 MODEL_ID = "gemini-2.0-flash"
-PROJECT_ID = "pdfanalysis-451621"
+PROJECT_ID = os.getenv("PROJECT_ID")
 LOCATION = "us-central1"
 
 client = genai.Client(

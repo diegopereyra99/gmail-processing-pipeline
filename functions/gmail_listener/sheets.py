@@ -1,5 +1,5 @@
-from google.oauth2 import service_account
 from googleapiclient.discovery import build
+import google.auth
 import os
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
@@ -8,9 +8,9 @@ SHEET_ID = os.getenv("SHEET_ID")
 
 
 def get_sheets_service():
-    creds = service_account.Credentials.from_service_account_file(
-        "sheets-access-key.json", scopes=SCOPES)
-    return build('sheets', 'v4', credentials=creds)
+    # Use Application Default Credentials (ADC) provided by Cloud Functions
+    credentials, _ = google.auth.default(scopes=SCOPES)
+    return build('sheets', 'v4', credentials=credentials)
 
 
 def create_dashboard_sheet():
@@ -20,16 +20,8 @@ def create_dashboard_sheet():
             'title': SHEET_NAME
         },
         'sheets': [
-            {
-                'properties': {
-                    'title': 'Emails'
-                }
-            },
-            {
-                'properties': {
-                    'title': 'Attachments'
-                }
-            }
+            {'properties': {'title': 'Emails'}},
+            {'properties': {'title': 'Attachments'}}
         ]
     }
 
@@ -60,14 +52,14 @@ def append_document_row(sheet_id, row):
         valueInputOption='RAW',
         body=body
     ).execute()
-    
-    
+
+
 def get_processed_message_ids(sheet_id):
     service = get_sheets_service()
     result = service.spreadsheets().values().get(
         spreadsheetId=sheet_id,
-        range="Emails!H2:H"  # adjust column if your message ID is elsewhere
+        range="Emails!H2:H"
     ).execute()
 
     values = result.get("values", [])
-    return set(row[0] for row in values if row) 
+    return set(row[0] for row in values if row)

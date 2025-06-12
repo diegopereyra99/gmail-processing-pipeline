@@ -1,4 +1,17 @@
+# Output directories
+attachments/
 __pycache__/
-.env
-token.pickle
 *.pyc
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# Env/config
+.env
+credentials.json
+
+# Data and others
+data/
+*.json
+*.pdf
+

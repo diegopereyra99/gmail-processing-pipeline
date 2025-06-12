@@ -8,6 +8,7 @@ from google.cloud import secretmanager
 from sheets import append_email_row, append_document_row, get_processed_message_ids
 from gemini_utils import summarize_email_structured, analyze_attachment
 
+PROJECT_ID = os.getenv("PROJECT_ID")
 
 def fetch_last_messages(service, count=5):
     results = service.users().messages().list(userId='me', maxResults=count, labelIds=["INBOX"]).execute()
@@ -16,7 +17,8 @@ def fetch_last_messages(service, count=5):
 
 def get_gmail_service():
     secret_client = secretmanager.SecretManagerServiceClient()
-    secret_name = "projects/pdfanalysis-451621/secrets/gmail-token/versions/latest"
+    print(f"Project ID: {PROJECT_ID}")
+    secret_name = f"projects/{PROJECT_ID}/secrets/gmail-token/versions/latest"
     response = secret_client.access_secret_version(request={"name": secret_name})
     token_data = response.payload.data
     creds = pickle.loads(token_data)
