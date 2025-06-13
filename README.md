@@ -1,6 +1,13 @@
-# PDF Intake Pipeline
+# Gmail Processing Pipeline with AI
 
-This project automates processing of PDF email attachments with Google Cloud. Gmail events trigger a Cloud Function that downloads new messages, parses PDFs with Document AI and Gemini, and logs the results to Google Sheets.
+This project is a pipeline that uses AI to automatically analyze incoming emails and extract structured data in real time.
+
+When a new email arrives, a Pub/Sub-triggered Cloud Function:
+- Fetches the email and attachments via the Gmail API
+- Uses **Google Document AI** and **Gemini** to analyze both the email content and its attachments
+- Logs the extracted data into a Google Sheet (or another target system)
+
+The entire pipeline runs on **Google Cloud**, leveraging serverless infrastructure and state-of-the-art language models to intelligently process incoming emails at scale.
 
 ## Repository Layout
 
