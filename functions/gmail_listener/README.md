@@ -13,15 +13,18 @@ functions/
     └── sheets.py
 ```
 
-## Entry Point
+## Google Sheets Configuration
 
-The deployed function uses `gmail_pubsub_trigger` from `main.py` as its entry point.
+You can start from this template to ensure proper formatting:
 
-## Environment Variables
+[Google Sheets Template (View Only)](https://docs.google.com/spreadsheets/d/1OuWBXCjXKMsZVTVA8lYlW2u_q65H8xzyY7vpPLzoYfo)
 
-`SHEET_ID` must be provided at deployment time and points to the spreadsheet that will store parsed data.
+Make a copy to your own Drive and share access to your service account (gmail-function-sa@<YOUR_PROJECT_ID>.iam.gserviceaccount.com) as editor.
+
 
 ## Deployment
+
+The deployed function uses `gmail_pubsub_trigger` from `main.py` as its entry point.
 
 ```bash
 gcloud functions deploy gmail_pubsub_trigger \
