@@ -36,11 +36,11 @@ It combines **Google Cloud Platform** and **Google AI services** to create a rea
 
 Each part of the infrastructure can be setup following the specific instructions:
 
-1. **Google Cloud Setup** – enable APIs, create a project and service account  
-2. **Gmail OAuth** – register and authorize Gmail access  
-3. **Secret Manager** – store your Gmail token  
-4. **Pub/Sub + Watch** – configure the Gmail watch and Pub/Sub topic  
-5. **Deploy the Function** – deploy the Cloud Function  
-6. **Run Locally** – install dependencies and run helpers
+1. **Google Cloud Setup** – create a project, enable APIs and configure a service account. [See instructions](infra/google_cloud_setup.md)
+2. **Gmail OAuth** – register an OAuth client and authorize your Gmail account. [See instructions](infra/oauth_setup.md)
+3. **Secret Manager** – upload the Gmail token for the function to use. [See instructions](infra/secrets_setup.md)
+4. **Gmail Watch & Pub/Sub** – create a Pub/Sub topic and register a watch. [See instructions](infra/pubsub_setup.md)
+5. **Deploy the Gmail Listener** – build and deploy the Cloud Function. [See instructions](functions/gmail_listener/README.md)
+6. **Local Setup** – install dependencies and run local helpers. [See instructions](docs/local_setup.md)
 
 See the `infra/` and `docs/` folders for full step-by-step instructions.
