@@ -15,3 +15,10 @@ data/
 *.json
 *.pdf
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+infra/terraform/build/
+!infra/terraform/build/.gitkeep
+

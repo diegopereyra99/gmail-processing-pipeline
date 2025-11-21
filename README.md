@@ -43,4 +43,10 @@ Each part of the infrastructure can be setup following the specific instructions
 5. **Deploy the Gmail Listener** – build and deploy the Cloud Function. [See instructions](functions/gmail_listener/README.md)
 6. **Local Setup** – install dependencies and run local helpers. [See instructions](docs/local_setup.md)
 
+### Terraform deployment (optional)
+
+You can provision the core Google Cloud resources—including required APIs, service accounts, Pub/Sub, Secret Manager, and the Gmail listener Cloud Function—using Terraform. See [infra/terraform/README.md](infra/terraform/README.md) for details.
+
+> Note: OAuth client creation and Gmail token generation are interactive steps and cannot be automated with Terraform. Follow the [Gmail OAuth setup](infra/oauth_setup.md) first and then upload `token.pickle` to Secret Manager.
+
 See the `infra/` and `docs/` folders for full step-by-step instructions.
